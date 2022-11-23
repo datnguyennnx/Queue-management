@@ -1,0 +1,49 @@
+version: '3'
+services:
+  postgres:
+      image: 'postgres:latest'
+      ports:
+          - "5432:5432"
+      environment:
+        - POSTGRES_USER=root
+        - POSTGRES_DATABASE=mail_server
+        - POSTGRES_ROOT_PASSWORD=root
+        - POSTGRES_PASSWORD=root
+      volumes:
+          - ./postgresql/data:/var/lib/postgresql/data
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+  api:
+      build:
+          context: ./server
+          dockerfile: Dockerfile.dev
+      volumes:
+          - /app/node_modules
+          - ./server:/app
+      restart: always
+      environment:
+        - pgUser=root
+        - pgHost=root
+        - pgDatabase=mail_server
+        - pgPassword=root
+        - pgPort=5432
+      ports:
+          - "5000:5000"
+
+  client:
+      build:
+          context: ./client
+          dockerfile: Dockerfile.dev
+      volumes:
+          - /app/node_modules
+          - ./client:/app
+      ports:
+          - "3000:3000"

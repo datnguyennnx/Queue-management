@@ -1,0 +1,17 @@
+{
+  "name": "queue-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/datnguyennnx/Queue-management.git",
+  "author": "datnguyennnx <official.nguyendat@gmail.com>",
+  "license": "",
+  "scripts": {
+    "docker:build": "docker-compose -p {mail_server} build",
+    "docker:down": "docker-compose -p {mail_server} down",
+    "docker:up": "docker-compose -p {mail_server} up",
+    "test": "echo \"Error: no test specified\" && exit 1"
+ },
+  "dependencies": {
+    "gpl-3.0": "^1.0.1"
+  }
+}
