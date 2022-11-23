@@ -1,16 +1,17 @@
-version: '3'
+version: '3.9'
 services:
   postgres:
       image: 'postgres:latest'
-      ports:
-          - "5432:5432"
       environment:
         - POSTGRES_USER=root
-        - POSTGRES_DATABASE=mail_server
+        - POSTGRES_DB=mail_server
         - POSTGRES_ROOT_PASSWORD=root
         - POSTGRES_PASSWORD=root
-      volumes:
-          - ./postgresql/data:/var/lib/postgresql/data
+        - POSTGRES_HOST_AUTH_METHOD=trust
+        - POSTGRES_DB_HOST=127.0.0.1
+      restart: always
+      ports:
+          - "5432:5432"
   nginx:
     depends_on:
       - api
@@ -47,3 +48,5 @@ services:
           - ./client:/app
       ports:
           - "3000:3000"
+volumes: 
+  dbdata:
