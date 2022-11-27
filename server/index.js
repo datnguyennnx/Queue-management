@@ -1,9 +1,10 @@
+const PORT = process.env.PORT || 5000;
 const keys = require("./keys")
 
 // Express Setup
 const express = require("express")
 const bodyParser = require("body-parser")
-const cors = require("cors")
+const cors = require("cors") //allow our axios request 
 
 const app = express()
 app.use(cors())
@@ -27,9 +28,8 @@ const pgClient = new Pool({
 
 // Express route definition
 app.get("/", (req, res) => {
-    res.send("Hello World")
-})
-const PORT = process.env.PORT || 5000;
+    res.send({ message: "We did it!" });
+  });
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 

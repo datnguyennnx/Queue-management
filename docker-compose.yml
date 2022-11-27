@@ -1,5 +1,18 @@
 version: '3.9'
 services:
+  postfix:
+    image: 'juanluisbaptiste/postfix:latest'
+    build:
+      context: ./postfix
+      dockerfile: Dockerfile.dev
+    expose:
+    - "25"
+    env_file:
+      - "./postfix/.env"
+    restart: always
+    volumes:
+     - "/etc/localtime:/etc/localtime:ro"
+    
   postgres:
       image: 'postgres:latest'
       environment:
@@ -48,5 +61,3 @@ services:
           - ./client:/app
       ports:
           - "3000:3000"
-volumes: 
-  dbdata:
