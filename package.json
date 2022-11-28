@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/datnguyennnx/Queue-management.git",
   "author": "datnguyennnx <official.nguyendat@gmail.com>",
-  "license": "",
+  "license": "GPL-3.0 license",
   "scripts": {
     "docker:build": "docker-compose -p {mail_server} build",
     "docker:down": "docker-compose -p {mail_server} down",

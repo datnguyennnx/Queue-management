@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "datnguyennnx",
-  "license": "MIT",
+  "license": "GPL-3.0 license",
   "dependencies": {
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
