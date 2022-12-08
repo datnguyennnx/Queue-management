@@ -12,18 +12,22 @@
 <p align="center"><img src="./media/Design%20System.png" /></p>
 ### Installation
 **Docker Compose**
+
 ```
 $ git clone https://github.com/datnguyennnx/Queue-management
 $ cd Queue-management
 $ yarn run docker:build 
 $ yarn run docker:up 
 ```
+
 **Docker container Postfix**
+
 ```
 $ cd Queue-management/postfix
 $ docker build -t juanluisbaptiste/postfix .
 $ docker run -d --name postfix -p "25:25" -e SMTP_SERVER=postfix -e SMTP_USERNAME=admin@gmail.com -e SMTP_PASSWORD=root -e SERVER_HOSTNAME=postfix.com juanluisbaptiste/postfix
 ```
+
 When run `yarn run docker:up` we following in `Docker Desktop`.
 <p align="center"><img src="./media/Container.png" /></p>
 
