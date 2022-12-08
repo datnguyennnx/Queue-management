@@ -10,7 +10,9 @@
   - [ ] **Storing data on database.**
 ### Overview project
 <p align="center"><img src="./media/Design%20System.png" /></p>
+
 ### Installation
+
 **Docker Compose**
 
 ```
