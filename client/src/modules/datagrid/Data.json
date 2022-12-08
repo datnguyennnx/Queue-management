@@ -1,0 +1,94 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "queue_name": "deferred",
+            "mail_id": "D5D2553DDA4",
+            "time": 1670402565,
+            "size": 390,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"            
+        },
+        {
+            "id": 2,
+            "queue_name": "deferred",
+            "mail_id":"090424A24B",
+            "time": 1670402565,
+            "size": 432,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"            
+        },
+        {
+            "id": 3,
+            "queue_name": "deferred",
+            "mail_id": "090424A24B",
+            "time": 1670402565,
+            "size": 322,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"            
+        },
+        {
+            "id": 4,
+            "queue_name": "deferred",
+            "mail_id": "6BBE153DDAF",
+            "time": 1670402565,
+            "size": 872,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "20119188@student.hcmute.edu.vn",
+            "status": "pending"
+        },
+        {
+            "id": 5,
+            "queue_name": "deferred",
+            "mail_id": "8564553DDB3",
+            "time": 1670402565,
+            "size": 1231,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"
+        },
+        {
+            "id": 6,
+            "queue_name": "deferred",
+            "mail_id": "090424A24B",
+            "time": 1670402565,
+            "size": 123,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "offical.nguyendat@gmail.com",
+            "status": "pending"
+        },
+        {
+            "id": 7,
+            "queue_name": "active",
+            "mail_id": "6105F112A2V",
+            "time": 1670402565,
+            "size": 322,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "20119125@student.hcmute.edu.vn",
+            "status": "pending"
+        },
+        {
+            "id": 8,
+            "queue_name": "active",
+            "mail_id":"6105F112A2V",
+            "time": 1670402565,
+            "size": 351,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"
+        },
+        {
+            "id": 9,
+            "queue_name": "active",
+            "mail_id": "6105F112A2V",
+            "time": 1670402565,
+            "size": 731,
+            "sender": "datnguyennnx@gmail.com",
+            "recipient": "thinhdo@gmail.com",
+            "status": "pending"
+        }
+    ]
+}

@@ -6,9 +6,9 @@
   "author": "datnguyennnx <official.nguyendat@gmail.com>",
   "license": "GPL-3.0 license",
   "scripts": {
-    "docker:build": "docker-compose -p {mail_server} build",
-    "docker:down": "docker-compose -p {mail_server} down",
-    "docker:up": "docker-compose -p {mail_server} up",
+    "docker:build": "docker-compose -p {server} build",
+    "docker:down": "docker-compose -p {server} down",
+    "docker:up": "docker-compose -p {server} up",
     "test": "echo \"Error: no test specified\" && exit 1"
  },
   "dependencies": {

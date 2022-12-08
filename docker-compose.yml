@@ -1,30 +1,37 @@
 version: '3.9'
 services:
-  postfix:
-    image: 'juanluisbaptiste/postfix:latest'
-    build:
-      context: ./postfix
-      dockerfile: Dockerfile.dev
-    expose:
-    - "25"
-    env_file:
-      - "./postfix/.env"
-    restart: always
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-     - "/etc/localtime:/etc/localtime:ro"
-    
-  postgres:
-      image: 'postgres:latest'
-      environment:
-        - POSTGRES_USER=root
-        - POSTGRES_DB=mail_server
-        - POSTGRES_ROOT_PASSWORD=root
-        - POSTGRES_PASSWORD=root
-        - POSTGRES_HOST_AUTH_METHOD=trust
-        - POSTGRES_DB_HOST=127.0.0.1
-      restart: always
-      ports:
-          - "5432:5432"
+      - db:/var/lib/mysql
+
+  api:
+    depends_on:
+      - mysqldb
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./server
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_DOCKER_PORT
+      - CLIENT_ORIGIN=$CLIENT_ORIGIN
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
   nginx:
     depends_on:
       - api
@@ -35,29 +42,18 @@ services:
       context: ./nginx
     ports:
       - "3050:80"
-  api:
-      build:
-          context: ./server
-          dockerfile: Dockerfile.dev
-      volumes:
-          - /app/node_modules
-          - ./server:/app
-      restart: always
-      environment:
-        - pgUser=root
-        - pgHost=root
-        - pgDatabase=mail_server
-        - pgPassword=root
-        - pgPort=5432
-      ports:
-          - "5000:5000"
 
   client:
-      build:
-          context: ./client
-          dockerfile: Dockerfile.dev
-      volumes:
-          - /app/node_modules
-          - ./client:/app
-      ports:
-          - "3000:3000"
+    depends_on:
+      - api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+      args:
+        - REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+    ports:
+      - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+
+volumes: 
+  db:
+        

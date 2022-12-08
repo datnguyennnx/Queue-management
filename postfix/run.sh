@@ -51,6 +51,7 @@ fi
 
 # Bind to both IPv4 and IPv4
 add_config_value "inet_protocols" "all"
+add_config_value "inet_interfaces" "all"
 
 # Create sasl_passwd file with auth credentials
 if [ ! -f /etc/postfix/sasl_passwd -a ! -z "${SMTP_USERNAME}" ]; then
@@ -77,7 +78,7 @@ if [ "${LOG_SUBJECT}" == "yes" ]; then
 fi
 
 #Check for subnet restrictions
-nets='10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16'
+nets='127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.0.0/16'
 if [ ! -z "${SMTP_NETWORKS}" ]; then
   declare ipv6re="^((([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|\
     ([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|\
